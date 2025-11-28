@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/cpp-project/build/cmake_install.cmake",
+		"E:/cpp-project/build/raylib/cmake_install.cmake",
+		"E:/cpp-project/build/raylib/raylib/cmake_install.cmake",
+		"E:/cpp-project/build/raylib/raylib/external/glfw/cmake_install.cmake",
+		"E:/cpp-project/build/raylib/raylib/external/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
