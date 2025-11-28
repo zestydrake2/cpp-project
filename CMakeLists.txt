@@ -16,7 +16,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # Link Raylib to your executable
 target_link_libraries(${PROJECT_NAME} raylib)
 
-add_custom_command(TARGET PhysicsDemo POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/assets
-        $<TARGET_FILE_DIR: PhysicsDemo>/assets)
+# add_custom_command(TARGET PhysicsDemo POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_directory
+#         ${CMAKE_SOURCE_DIR}/assets
+#         $<TARGET_FILE_DIR: PhysicsDemo>/assets)
