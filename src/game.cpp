@@ -3,16 +3,6 @@
 #include <memory>
 #include <raylib.h>
 
-/*   -- notes: --
-
-1. I havent added in any form of drag which is why you will often see the ball rolling back and forth repeatedly.
-
-2. Im most likely not going to update this since it is just a short project i made while i was bored.
-
-*/
-
-
-
 int main(){
    // initializing vars
     float ballX = 400.0f;
@@ -20,7 +10,8 @@ int main(){
     float vx = 0.0f;
     float vy = 0.0f;
     float radius = 30;
-    float gravity = 9.8f;
+    float gravity = 12.0f;
+    float drag = 0.995f;
     float elasticity = 0.8f;
     int boxWidth = 800;
     int boxHeight = 600;
@@ -30,7 +21,6 @@ int main(){
     camera.rotation = 0.0f;
     camera.zoom = 1.0f;
    
-
 
     SetTargetFPS(60);
     InitWindow(boxWidth, boxHeight, "2D PHYSICS SIM");
@@ -42,8 +32,7 @@ int main(){
         // mousePos uses screen coordinates so we convert it to world coordinates.
         Vector2 worldmousePos = GetScreenToWorld2D(mousePos, camera);
         
-        
-        
+                
         // warning the simulator is intended to be ran at 60fps since deltatime is only partially used.
         float dt = GetFrameTime();
         
@@ -52,12 +41,15 @@ int main(){
         BeginMode2D(camera);
         DrawCircle(ballX, ballY, radius, RED);
 
-       // adds gravity (9.8) to the y velocity, in raylib positive y is down and negative is up.
+       // adds gravity to the y velocity, in raylib positive y is down and negative is up.
         vy += gravity;
 
         //ball position updates based on the velocity.
         ballX += vx * dt;
         ballY += vy* dt;
+
+        vx *= drag;
+        vy *= drag;
 
 
         // lets u pick up the ball using your cursor. it is a bit floaty
@@ -99,24 +91,18 @@ int main(){
         // adds force to a certain direction.
         
         if (IsKeyPressed(KEY_W)){
-            vy -= 250.0f;
+            vy -= 500.0f;
         }
         if (IsKeyPressed(KEY_S)){
-            vy += 250.0f;
+            vy += 500.0f;
         }
         if (IsKeyPressed(KEY_D)){
-            vx += 250.0f;
+            vx += 500.0f;
         }
         if (IsKeyPressed(KEY_A)){
-            vx -= 250.0f;
+            vx -= 500.0f;
         }
         
-
-
-
-
-
-
 
         EndMode2D();
         DrawText("W, A, S, D to add force to ball", 10 , 10, 20, GREEN);
