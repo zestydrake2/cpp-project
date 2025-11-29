@@ -1,1 +1,1 @@
-simple physics simulator
+simple physics simulator using raylib
